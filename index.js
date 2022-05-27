@@ -1,6 +1,7 @@
 const fs = require('fs');
 const https = require('https');
 
+const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 const post_options = {
   method: "POST",
@@ -57,7 +58,6 @@ config.target.forEach(target => {
         });
         bookmarks.filter(b => Date.parse(b.timestamp) > last_comment_date).forEach(b => {
           comments.push(b);
-          console.log(b);
         });
         fs.writeFileSync(saved_file, JSON.stringify(json), 'utf8');
 
@@ -75,6 +75,7 @@ config.target.forEach(target => {
           request.write(body);
           request.end();
           console.log('posted: ', body);
+          _sleep(1000);
         });
     }); 
   });
