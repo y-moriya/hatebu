@@ -23,7 +23,7 @@ config.target.forEach(target => {
       if (err) { throw err;}
     });
   }
-  let last_comment_date = Date.parse('2022/01/01 00:00');
+  let last_comment_date = Date.parse('2022/05/27 15:00');
   if (saved !== null) {
     last_comment_date = Date.parse(saved.bookmarks.sort((a, b) => {
       return Date.parse(b.timestamp) - Date.parse(a.timestamp);
@@ -68,6 +68,7 @@ config.target.forEach(target => {
         comments.forEach(c => {
           const body = JSON.stringify({
             "username": `${c.user} : ${json.title}`,
+            "avatar_url": config.avatar_url,
             "content": c.comment
           });
           const request = https.request(config.discord_webhook_url, post_options);

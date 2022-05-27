@@ -6,5 +6,6 @@
     }
   ],
   "api_url": "https://b.hatena.ne.jp/entry/jsonlite/?url=",
-  "discord_webhook_url": "https://discord.com/api/webhooks/*"
+  "discord_webhook_url": "https://discord.com/api/webhooks/*",
+  "avatar_url": "http://*"
 }
